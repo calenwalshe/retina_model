@@ -51,9 +51,8 @@ downsampleCoeff = parameters.downsampleCoeff;
 if downsampleCoeff ~= 1
     shiftCoeff  = floor((downsampleCoeff/2));
     x_randshift = randi([-shiftCoeff, shiftCoeff - 1]);
-    y_randshift = randi([-shiftCoeff, shiftCoeff - 1]);
-    
-    imAbsent  = circshift(imAbsent,  [x_randshift, y_randshift]);
+    y_randshift = randi([-shiftCoeff, shiftCoeff - 1]);    
+    imAbsent    = circshift(imAbsent,  [x_randshift, y_randshift]);
 end
 
 % 2. Retinal ganglion sampling blur
@@ -63,7 +62,7 @@ imAbsent  = lib.imblur(imAbsent, envelope);
 
 if downsampleCoeff ~= 0    
     
-    gaborParams.std        = .2;
+    gaborParams.std            = .2;
 	gaborParams.sf         = 4;
 	gaborParams.ori        = 90;
 	gaborParams.phase      = 0;
